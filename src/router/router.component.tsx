@@ -29,15 +29,12 @@ const RouterComponent: React.FC = () => {
 
                 <Route element={<PrivateRoute />}>
                     <Route path="*" element={<EmptyLayout><NotFoundPage /></EmptyLayout>} />
-                    <Route path={ROUTES.HOMEPAGE_ROUTE} element={<Navigate to={ROUTES.SALES_LOG_ROUTE} replace />} />
                     <Route path={ROUTES.SALES_LOG_ROUTE} element={<LoggedLayout><SalesLogPage /></LoggedLayout>} />
                     <Route path={ROUTES.REPORT_ROUTE} element={<LoggedLayout><ReportsPage /></LoggedLayout>} />
                 </Route>
 
                 <Route element={<PublicRoute />}>
-                    <Route path="/" element={<Navigate to={ROUTES.HOMEPAGE_ROUTE} replace />} />
                     <Route path="*" element={<EmptyLayout><NotFoundPage /></EmptyLayout>} />
-                    <Route path={ROUTES.HOMEPAGE_ROUTE} element={<Navigate to={ROUTES.LOGIN_ROUTE} replace />} />
                     <Route path={ROUTES.LOGIN_ROUTE} element={<EmptyLayout><LoginPage /></EmptyLayout>} />
                     <Route path={ROUTES.REGISTER_ROUTE} element={<EmptyLayout><RegisterPage /></EmptyLayout>} />
                 </Route>

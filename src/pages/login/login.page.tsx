@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import ROUTES from "../../router/router.settings"
 import { useState } from "react"
+import { useAppDispatch } from "../../store"
+import tokenAction from "../../store/auth/token/token.action"
 
 
 const LoginPage = () => {
@@ -25,8 +27,16 @@ const FormComponent = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
+
+		const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE3NTAzNzc2MDAwMDB9.Zb-ixauzERNQzPw1Qo8P8V44VI-wM9agmi6xhpmBAjo"
+		dispatch(tokenAction.set(token))
+		navigate(ROUTES.SALES_LOG_ROUTE)
 	}
 
 	return (

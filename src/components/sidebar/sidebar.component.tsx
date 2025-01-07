@@ -4,9 +4,12 @@ import { MdAttachMoney } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
 import { Link, useLocation } from "react-router-dom"
 import ROUTES from "../../router/router.settings"
+import useToken from "../../hooks/useToken.hook"
 
 const SidebarComponent = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const { logout } = useToken()
+
 	return (
 		<>
 			<OpenSidebarButton setIsOpen={setIsOpen} />
@@ -26,9 +29,12 @@ const SidebarComponent = () => {
 						</OptionNavigation>
 					</ul>
 					<ul className="space-y-2 font-medium">
-						<OptionNavigation to={ROUTES.LOGIN_ROUTE} title="Cerrar Sesión">
-							<RiLogoutBoxLine size={22} />
-						</OptionNavigation>
+						<li>
+							<a onClick={logout} className={`text-gray-900 dark:text-white' mb-3  flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
+								<RiLogoutBoxLine size={22} />
+								<span className="ms-3">Cerrar Sesión</span>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</aside>
@@ -53,15 +59,12 @@ const OptionNavigation = (props: { children: React.ReactNode, title: string, to:
 	const isActive = location === props.to;
 
 	return (
-		<Link to={props.to}>
-			<li>
-				<a href="#" className={` ${isActive ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-900 rounded-lg dark:text-white'} mb-3  flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
-					{props.children}
-					<span className="ms-3">{props.title}</span>
-				</a>
-			</li>
-		</Link>
-
+		<li>
+			<Link to={props?.to} className={` ${isActive ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-900 rounded-lg dark:text-white'} mb-3  flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
+				{props.children}
+				<span className="ms-3">{props.title}</span>
+			</Link>
+		</li>
 	)
 }
 

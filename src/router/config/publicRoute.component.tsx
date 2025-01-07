@@ -1,14 +1,13 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import ROUTES from '../router.settings';
-// import useToken from 'hooks/useToken.hook';
+import useToken from '../../hooks/useToken.hook';
 
 const PublicRoute = () => {
-	// const {token} =  useToken()
+	const {token} =  useToken()
 
-
-  if (false) {
-    return <Navigate to={ROUTES.HOMEPAGE_ROUTE} />;
+  if (token) {
+    return <Navigate to={ROUTES.SALES_LOG_ROUTE} />;
   }
 
   return <Outlet />;
