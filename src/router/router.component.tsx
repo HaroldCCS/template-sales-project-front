@@ -16,6 +16,8 @@ import HomePage from '../pages/home/home.page';
 import PrivateRoute from './config/privateRoute.component';
 import PublicRoute from './config/publicRoute.component';
 import LoginPage from '../pages/login/login.page';
+import SalesLogPage from '../pages/salesLog/salesLog.page';
+import ReportsPage from '../pages/reports/reports.page';
 
 
 
@@ -27,8 +29,9 @@ const RouterComponent: React.FC = () => {
                 <Route element={<PrivateRoute />}>
                     <Route path="*" element={<EmptyLayout><NotFoundPage /></EmptyLayout>} />
                     <Route path={ROUTES.HOMEPAGE_ROUTE} element={<EmptyLayout><HomePage /></EmptyLayout>} />
+                    <Route path={ROUTES.SALES_LOG_ROUTE} element={<EmptyLayout><SalesLogPage /></EmptyLayout>} />
+                    <Route path={ROUTES.REPORT_ROUTE} element={<EmptyLayout><ReportsPage /></EmptyLayout>} />
                 </Route>
-
 
                 <Route element={<PublicRoute />}>
                     <Route path="/" element={<Navigate to={ROUTES.HOMEPAGE_ROUTE} replace />} />
