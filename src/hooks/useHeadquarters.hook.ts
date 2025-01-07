@@ -7,12 +7,12 @@ function useHeadquarters() {
   const dispatch = useAppDispatch();
 
 
-  const addOne = async (headquarter: IHeadquarter) => {
-    dispatch(headquartersAction.addOne(headquarter));
+  const addOne = async (data: IHeadquarter) => {
+    dispatch(headquartersAction.addOne(data));
   }
 
-  const editOne = async (headquarter: IHeadquarter) => {
-    dispatch(headquartersAction.editOne(headquarter));
+  const editOne = async (data: IHeadquarter) => {
+    dispatch(headquartersAction.editOne(data));
   }
 
   const dropOne = async (id: number) => {

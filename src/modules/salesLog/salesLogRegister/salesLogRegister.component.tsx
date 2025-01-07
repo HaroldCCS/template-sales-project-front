@@ -1,4 +1,6 @@
 import { useState } from "react"
+import useHeadquarters from "../../../hooks/useHeadquarters.hook"
+import usePaymentMethods from "../../../hooks/usePaymentMethods.hook"
 
 
 const SalesLogRegisterComponent = () => {
@@ -39,11 +41,15 @@ const SalesLogRegisterComponent = () => {
 }
 
 const FormSaleComponent = () => {
+
+  const { headquarters } = useHeadquarters()
+  const { paymentMethods } = usePaymentMethods()
+
   return (
 
     <form>
       <div className="grid gap-6 mb-6 md:grid-cols-2">
-        
+
         <div>
           <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>
           <input type="text" id="description" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripcion" required />
@@ -78,10 +84,16 @@ const FormSaleComponent = () => {
         <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Metodo de Pago</label>
         <select id="method" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option selected>Elige una opcion</option>
-          <option value="NEQUI">NEQUI</option>
-          <option value="EFECTIVO">EFECTIVO</option>
-          <option value="TARJETA">TARJETA</option>
-          <option value="DAVIPLATA">DAVIPLATA</option>
+          {paymentMethods?.map(_e => <option value={_e?.id}>{_e?.name}</option>)}
+
+        </select>
+      </div>
+      <div className="mb-6">
+        <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sede</label>
+        <select id="method" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected>Elige una opcion</option>
+
+          {headquarters?.map(_e => <option value={_e?.id}>{_e?.name}</option>)}
         </select>
       </div>
       <div className="mb-6">

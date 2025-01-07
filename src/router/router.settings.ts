@@ -7,7 +7,7 @@ const ROUTES = {
 
     SETTINGS_ROUTE: '/configuraciones',
     SETTINGS_HEADQUARTERS: '/configuraciones/sedes',
-
+    SETTINGS_PAYMENT_METHODS: '/configuraciones/metodos-de-pago',
 }
 
 

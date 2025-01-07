@@ -6,6 +6,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage
 
 import tokenReducer from './auth/token/token.reducer'
 import headquarterReducer from './app/settings/headquarters/headquarters.reducer'
+import paymentMethodReducer from './app/settings/paymentMehtods/paymentMethods.reducer'
 
 const userReducerCombined = combineReducers({
     token: tokenReducer,
@@ -16,6 +17,7 @@ const userReducerCombined = combineReducers({
 const rootReducer = combineReducers({
     user: userReducerCombined,
     headquarters: headquarterReducer,
+    paymentMethods: paymentMethodReducer,
 })
 
 const persistedReducer = persistReducer(
