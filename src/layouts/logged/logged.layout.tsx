@@ -4,7 +4,6 @@ import SidebarComponent from '../../components/sidebar/sidebar.component'
 
 const LoggedLayout = (props: { children: React.ReactNode }) => {
   
-
   return (
 
     <>

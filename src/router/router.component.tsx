@@ -30,7 +30,7 @@ const RouterComponent: React.FC = () => {
                 <Route element={<PrivateRoute />}>
                     <Route path="*" element={<EmptyLayout><NotFoundPage /></EmptyLayout>} />
                     <Route path={ROUTES.HOMEPAGE_ROUTE} element={<EmptyLayout><HomePage /></EmptyLayout>} />
-                    <Route path={ROUTES.SALES_LOG_ROUTE} element={<EmptyLayout><SalesLogPage /></EmptyLayout>} />
+                    <Route path={ROUTES.SALES_LOG_ROUTE} element={<LoggedLayout><SalesLogPage /></LoggedLayout>} />
                     <Route path={ROUTES.REPORT_ROUTE} element={<LoggedLayout><ReportsPage /></LoggedLayout>} />
                 </Route>
 
