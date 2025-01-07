@@ -19,6 +19,7 @@ import LoginPage from '../pages/login/login.page';
 import SalesLogPage from '../pages/salesLog/salesLog.page';
 import ReportsPage from '../pages/reports/reports.page';
 import LoggedLayout from '../layouts/logged/logged.layout';
+import RegisterPage from '../pages/register/register.page';
 
 
 
@@ -39,6 +40,7 @@ const RouterComponent: React.FC = () => {
                     <Route path="*" element={<EmptyLayout><NotFoundPage /></EmptyLayout>} />
                     <Route path={ROUTES.HOMEPAGE_ROUTE} element={<EmptyLayout><HomePage /></EmptyLayout>} />
                     <Route path={ROUTES.LOGIN_ROUTE} element={<EmptyLayout><LoginPage /></EmptyLayout>} />
+                    <Route path={ROUTES.REGISTER_ROUTE} element={<EmptyLayout><RegisterPage /></EmptyLayout>} />
                 </Route>
             </Routes>
         </Router>
