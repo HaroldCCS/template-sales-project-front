@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
+
 import MoneyFormatter from "../../../utility/MoneyFormatter";
+import { ISalesLog } from "../salesLog.d";
 
 
-interface ISalesLog {
-	id: number;
-	description: string;
-	price: number;
-	quantity: number;
-	finalPrice: number;
-	date: Date;
-	registrant: string;
-	method: 'NEQUI'  | 'EFECTIVO' | 'TARJETA' | 'DAVIPLATA';
-	file: string;
-}
 
 const SalesLogTableComponent = () => {
 
