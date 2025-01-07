@@ -4,8 +4,10 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage
 
+import tokenReducer from './auth/token/token.reducer'
 
 const userReducerCombined = combineReducers({
+    token: tokenReducer,
 })
 
 
