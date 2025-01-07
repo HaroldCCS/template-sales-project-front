@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 import { HiOutlineDocumentReport } from "react-icons/hi"
 import { MdAttachMoney } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import ROUTES from "../../router/router.settings"
 
 const SidebarComponent = () => {
@@ -37,10 +37,13 @@ const OpenSidebarButton = ({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void
 }
 
 const OptionNavigation = (props: { children: React.ReactNode, title: string, to: string }) => {
+  const location = '/' + useLocation()?.pathname?.split('/')[1];
+  const isActive = location === props.to;
+	
 	return (
 		<Link to={props.to}>
 			<li>
-				<a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+				<a href="#" className={` ${isActive ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-900 rounded-lg dark:text-white'} flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
 					{props.children}
 					<span className="ms-3">{props.title}</span>
 				</a>
@@ -50,4 +53,4 @@ const OptionNavigation = (props: { children: React.ReactNode, title: string, to:
 	)
 }
 
-export default SidebarComponent 
+export default memo(SidebarComponent)
