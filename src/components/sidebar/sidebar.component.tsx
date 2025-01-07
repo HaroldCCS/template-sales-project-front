@@ -43,7 +43,7 @@ const OptionNavigation = (props: { children: React.ReactNode, title: string, to:
 	return (
 		<Link to={props.to}>
 			<li>
-				<a href="#" className={` ${isActive ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-900 rounded-lg dark:text-white'} flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
+				<a href="#" className={` ${isActive ? 'bg-gray-200 dark:bg-gray-700' : 'text-gray-900 rounded-lg dark:text-white'} mb-3  flex items-center p-2  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
 					{props.children}
 					<span className="ms-3">{props.title}</span>
 				</a>
