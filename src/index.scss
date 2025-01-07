@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  :root {
+    --color-primary: #1E40AF;
+    --color-secondary: #60A5FA;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -24,6 +32,9 @@
   height: fill-available;
   width: 100%;
 
+}
+#root {
+  width: 100%;
 }
 
 html {
