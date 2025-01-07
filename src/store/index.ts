@@ -5,14 +5,17 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage
 
 import tokenReducer from './auth/token/token.reducer'
+import headquarterReducer from './app/settings/headquarters/headquarters.reducer'
 
 const userReducerCombined = combineReducers({
     token: tokenReducer,
 })
 
 
+
 const rootReducer = combineReducers({
     user: userReducerCombined,
+    headquarters: headquarterReducer,
 })
 
 const persistedReducer = persistReducer(

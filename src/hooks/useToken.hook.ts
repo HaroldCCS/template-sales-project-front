@@ -6,6 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 import { useAppDispatch, useAppSelector } from '../store';
 import ROUTES from '../router/router.settings';
 import tokenAction from '../store/auth/token/token.action';
+import headquartersAction from '../store/app/settings/headquarters/headquarters.action';
 
 function useToken() {
   const token = useAppSelector(state => state?.user?.token?.token);
@@ -14,6 +15,7 @@ function useToken() {
 
   const logout = () => {
     dispatch(tokenAction.drop());
+    dispatch(headquartersAction.dropAll());
     navigate(ROUTES.LOGIN_ROUTE);
   }
 
