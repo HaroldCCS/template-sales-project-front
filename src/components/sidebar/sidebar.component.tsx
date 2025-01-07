@@ -6,23 +6,35 @@ import { Link, useLocation } from "react-router-dom"
 import ROUTES from "../../router/router.settings"
 
 const SidebarComponent = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<>
 			<OpenSidebarButton setIsOpen={setIsOpen} />
 
-			<aside id="default-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-				<div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+			<aside
+				id="default-sidebar"
+				className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+				aria-label="Sidebar"
+			>
+				<div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex flex-col">
+					<ul className="space-y-2 font-medium flex-grow">
+						<OptionNavigation to={ROUTES.REPORT_ROUTE} title="Reportes">
+							<HiOutlineDocumentReport size={22} />
+						</OptionNavigation>
+						<OptionNavigation to={ROUTES.SALES_LOG_ROUTE} title="Ventas">
+							<MdAttachMoney size={22} />
+						</OptionNavigation>
+					</ul>
 					<ul className="space-y-2 font-medium">
-						<OptionNavigation to={ROUTES.REPORT_ROUTE} title="Reportes"> <HiOutlineDocumentReport size={22} /> </OptionNavigation>
-						<OptionNavigation to={ROUTES.SALES_LOG_ROUTE} title="Ventas"> <MdAttachMoney size={22} /> </OptionNavigation>
-						<OptionNavigation to={ROUTES.LOGIN_ROUTE} title="Cerrar Sesion"> <RiLogoutBoxLine size={22} /> </OptionNavigation>
+						<OptionNavigation to={ROUTES.LOGIN_ROUTE} title="Cerrar Sesión">
+							<RiLogoutBoxLine size={22} />
+						</OptionNavigation>
 					</ul>
 				</div>
 			</aside>
 		</>
-	)
-}
+	);
+};
 
 const OpenSidebarButton = ({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void }) => {
 
@@ -37,9 +49,9 @@ const OpenSidebarButton = ({ setIsOpen }: { setIsOpen: (isOpen: boolean) => void
 }
 
 const OptionNavigation = (props: { children: React.ReactNode, title: string, to: string }) => {
-  const location = '/' + useLocation()?.pathname?.split('/')[1];
-  const isActive = location === props.to;
-	
+	const location = '/' + useLocation()?.pathname?.split('/')[1];
+	const isActive = location === props.to;
+
 	return (
 		<Link to={props.to}>
 			<li>
