@@ -6,7 +6,6 @@ function EmptyLayout(props: { children: React.ReactNode }) {
   return (
     <>
       <header>
-        header
       </header>
 
       <main className={styles.main}>
@@ -16,7 +15,6 @@ function EmptyLayout(props: { children: React.ReactNode }) {
       </main>
 
       <footer>
-        footer
       </footer>
     </>
   );
