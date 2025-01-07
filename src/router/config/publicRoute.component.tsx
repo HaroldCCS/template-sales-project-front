@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import ROUTES from '../router.settings';
 import useToken from '../../hooks/useToken.hook';
