@@ -8,7 +8,7 @@ const LoggedLayout = (props: { children: React.ReactNode }) => {
     <>
       <SidebarComponent />
 
-      <main className="p-4 sm:ml-64">
+      <main className="p-4 sm:ml-56">
         {props.children}
       </main>
     </>
