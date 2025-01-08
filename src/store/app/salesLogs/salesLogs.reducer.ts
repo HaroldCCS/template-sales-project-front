@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import ACTIONS from './salesLogs.action'
 import { ISalesLog } from '../../../interfaces/salesLog.d'
 
-const name_storage = 'paymentMethods'
+const name_storage = 'salesLogs'
 interface IReducer { [name_storage]: ISalesLog[] }
 
 const initialState: IReducer = { [name_storage]: [] }

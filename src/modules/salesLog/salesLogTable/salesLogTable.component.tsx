@@ -1,33 +1,20 @@
-import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 
 import MoneyFormatter from "../../../utility/MoneyFormatter";
 import { ISalesLog } from "../../../interfaces/salesLog";
+import useSalesLogs from "../../../hooks/useSalesLogs.hook";
+import useHeadquarters from "../../../hooks/useHeadquarters.hook";
+import usePaymentMethods from "../../../hooks/usePaymentMethods.hook";
+import { IHeadquarter } from "../../../interfaces/headquarter";
+import { IPaymentMethod } from "../../../interfaces/paymentMethods";
 
 
 
 const SalesLogTableComponent = ({ isShort }: { isShort: boolean }) => {
 
-	const [sales, setSales] = useState<ISalesLog[]>([])
-
-	useEffect(() => {
-
-		//peticion al back
-		const response: ISalesLog[] = [{
-			id: 1,
-			description: 'Camiseta',
-			price: 10000,
-			quantity: 2,
-			finalPrice: 20000,
-			date: new Date(),
-			registrant: 'Sofia',
-			method: 'NEQUI',
-			file: ''
-		}]
-
-		setSales(response)
-
-	}, [])
+	const { salesLogs } = useSalesLogs()
+	const {headquarters} = useHeadquarters()
+	const { paymentMethods } = usePaymentMethods()
 
 	return (
 		<div className="relative overflow-x-auto">
@@ -38,7 +25,7 @@ const SalesLogTableComponent = ({ isShort }: { isShort: boolean }) => {
 				</thead>
 
 				<tbody>
-					{sales?.map(data => isShort ? <RowShortComponent sale={data} /> : <RowCompleteComponent sale={data} />)}
+					{salesLogs?.map(data => isShort ? <RowShortComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} /> : <RowCompleteComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} />)}
 				</tbody>
 
 			</table>
@@ -50,9 +37,6 @@ const TableHeaderShortComponent = () => {
 	return (
 		<tr>
 			<th scope="col" className="px-6 py-3 text-center">
-				id
-			</th>
-			<th scope="col" className="px-6 py-3 text-center">
 				Descripcion
 			</th>
 			<th scope="col" className="px-6 py-3 text-center">
@@ -63,6 +47,9 @@ const TableHeaderShortComponent = () => {
 			</th>
 			<th scope="col" className="px-6 py-3 text-center">
 				Metodo de pago
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Sede
 			</th>
 		</tr>
 	)
@@ -96,25 +83,28 @@ const TableHeaderCompleteComponent = () => {
 				Metodo de pago
 			</th>
 			<th scope="col" className="px-6 py-3 text-center">
+				Sede
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
 				Comprobante
 			</th>
 		</tr>
 	)
 }
 
-const RowShortComponent = (props: { sale: ISalesLog }) => {
+const RowShortComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[] }) => {
 	return (
 		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-			<ColumnComponent title={props.sale.id?.toString()}> </ColumnComponent>
 			<ColumnComponent title={props.sale.description}> </ColumnComponent>
 			<ColumnComponent title={MoneyFormatter(props.sale.finalPrice)}> </ColumnComponent>
 			<ColumnComponent title={new Date(props.sale.date)?.toLocaleString()}> </ColumnComponent>
-			<ColumnComponent title={props.sale.method}> </ColumnComponent>
+			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name  || ''}> </ColumnComponent>
+			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name  || ''}> </ColumnComponent>
 		</tr>
 	)
 }
 
-const RowCompleteComponent = (props: { sale: ISalesLog }) => {
+const RowCompleteComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[] }) => {
 	return (
 		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 			<ColumnComponent title={props.sale.id?.toString()}> </ColumnComponent>
@@ -124,9 +114,12 @@ const RowCompleteComponent = (props: { sale: ISalesLog }) => {
 			<ColumnComponent title={MoneyFormatter(props.sale.finalPrice)}> </ColumnComponent>
 			<ColumnComponent title={new Date(props.sale.date)?.toLocaleString()}> </ColumnComponent>
 			<ColumnComponent title={props.sale.registrant}> </ColumnComponent>
-			<ColumnComponent title={props.sale.method}> </ColumnComponent>
+			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name  || ''}> </ColumnComponent>
+			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name  || ''}> </ColumnComponent>
 			<ColumnComponent title={''}>
-				<FaEye size={20} className="hover:text-blue-600 dark:hover:text-blue-500 cursor-pointer flex w-full items-center justify-center" />
+				<a target="_blank" href={props?.sale?.file} >
+					<FaEye size={20} className="hover:text-blue-600 dark:hover:text-blue-500 cursor-pointer flex w-full items-center justify-center" />
+				</a>
 			</ColumnComponent>
 		</tr>
 	)
