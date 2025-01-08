@@ -8,4 +8,5 @@ export interface ISalesLog {
 	registrant: string;
 	method: 'NEQUI'  | 'EFECTIVO' | 'TARJETA' | 'DAVIPLATA';
 	file: string;
+	headquarter?: string;
 }
