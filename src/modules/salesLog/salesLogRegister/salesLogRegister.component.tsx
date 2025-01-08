@@ -1,7 +1,4 @@
-import { useRef, useState } from "react"
-import useHeadquarters from "../../../hooks/useHeadquarters.hook"
-import usePaymentMethods from "../../../hooks/usePaymentMethods.hook"
-import FilesComponent from "./file/files.component"
+import { useState } from "react"
 import SalesLogFormComponent from "../salesLogForm/salesLogForm.component"
 
 

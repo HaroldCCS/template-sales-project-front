@@ -47,7 +47,7 @@ const SalesLogFormComponent = (props: { close: () => void }) => {
     props.close()
   }
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setSalesLog({
       ...salesLog,
       [e.target.name]: e?.target?.value

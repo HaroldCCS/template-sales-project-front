@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosProgressEvent } from "axios";
 import env from "../settings/env";
 
 
@@ -49,15 +49,17 @@ const useUploadFile = ({ file }: {file?: File}) => {
       });
       formData.append("file", file);
 
-      const axiosConfig = {
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round(
-            (progressEvent.loaded / progressEvent.total) * 100
-          );
 
-          // Aquí puedes actualizar tu barra de progreso en el frontend
-          setProgressBar(progress);
-        },
+      const load = (progressEvent: AxiosProgressEvent) => {
+        const progress = Math.round(
+          (progressEvent.loaded / (progressEvent?.total || 1)) * 100
+        );
+
+        // Aquí puedes actualizar tu barra de progreso en el frontend
+        setProgressBar(progress);
+      }
+      const axiosConfig = {
+        onUploadProgress: load,
         method: "PUT",
         headers: { "Content-Type": "multipart/form-data" },
       };
