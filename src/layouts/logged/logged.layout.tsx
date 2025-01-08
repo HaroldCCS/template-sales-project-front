@@ -9,7 +9,9 @@ const LoggedLayout = (props: { children: React.ReactNode }) => {
       <SidebarComponent />
 
       <main className="p-4 sm:ml-56">
-        {props.children}
+        <div className="max-w-screen-lg mr-auto ml-auto">
+          {props.children}
+        </div>
       </main>
     </>
   )

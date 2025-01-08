@@ -6,7 +6,7 @@ import { ISalesLog } from "../../../interfaces/salesLog";
 
 
 
-const SalesLogTableComponent = () => {
+const SalesLogTableComponent = ({ isShort }: { isShort: boolean }) => {
 
 	const [sales, setSales] = useState<ISalesLog[]>([])
 
@@ -34,39 +34,11 @@ const SalesLogTableComponent = () => {
 			<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 
 				<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-					<tr>
-						<th scope="col" className="px-6 py-3 text-center">
-							id
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Descripcion
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Precio
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Cantidad
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Precion final
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Fecha de registro
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Registrante
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Metodo de pago
-						</th>
-						<th scope="col" className="px-6 py-3 text-center">
-							Comprobante
-						</th>
-					</tr>
+					{isShort ? <TableHeaderShortComponent /> : <TableHeaderCompleteComponent />}
 				</thead>
 
 				<tbody>
-					{sales?.map(data => <RowComponent sale={data} />)}
+					{sales?.map(data => isShort ? <RowShortComponent sale={data} /> : <RowCompleteComponent sale={data} />)}
 				</tbody>
 
 			</table>
@@ -74,7 +46,75 @@ const SalesLogTableComponent = () => {
 	)
 }
 
-const RowComponent = (props: {sale: ISalesLog}) => {
+const TableHeaderShortComponent = () => {
+	return (
+		<tr>
+			<th scope="col" className="px-6 py-3 text-center">
+				id
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Descripcion
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Precion final
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Fecha de registro
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Metodo de pago
+			</th>
+		</tr>
+	)
+}
+
+const TableHeaderCompleteComponent = () => {
+	return (
+		<tr>
+			<th scope="col" className="px-6 py-3 text-center">
+				id
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Descripcion
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Precio
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Cantidad
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Precion final
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Fecha de registro
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Registrante
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Metodo de pago
+			</th>
+			<th scope="col" className="px-6 py-3 text-center">
+				Comprobante
+			</th>
+		</tr>
+	)
+}
+
+const RowShortComponent = (props: { sale: ISalesLog }) => {
+	return (
+		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+			<ColumnComponent title={props.sale.id?.toString()}> </ColumnComponent>
+			<ColumnComponent title={props.sale.description}> </ColumnComponent>
+			<ColumnComponent title={MoneyFormatter(props.sale.finalPrice)}> </ColumnComponent>
+			<ColumnComponent title={new Date(props.sale.date)?.toLocaleString()}> </ColumnComponent>
+			<ColumnComponent title={props.sale.method}> </ColumnComponent>
+		</tr>
+	)
+}
+
+const RowCompleteComponent = (props: { sale: ISalesLog }) => {
 	return (
 		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 			<ColumnComponent title={props.sale.id?.toString()}> </ColumnComponent>
@@ -92,7 +132,7 @@ const RowComponent = (props: {sale: ISalesLog}) => {
 	)
 }
 
-const ColumnComponent = (props: {children?: React.ReactNode, title: string}) => {
+const ColumnComponent = (props: { children?: React.ReactNode, title: string }) => {
 	return (
 		<td scope="col" className="px-6 py-3 text-center">
 			{props.title}
