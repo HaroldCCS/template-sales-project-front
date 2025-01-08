@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { IHeadquarter } from '../../../../modules/settings/headquarter/headquarter.d'
+import { IHeadquarter } from '../../../../interfaces/headquarter'
 const fn_name = 'headquarters'
 
 //Many

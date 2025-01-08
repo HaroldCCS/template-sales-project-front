@@ -1,7 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit'
 
 import ACTIONS from './paymentMethods.action'
-import { IPaymentMethod } from '../../../../modules/settings/paymentMethods/paymentMethods'
+import { IPaymentMethod } from '../../../../interfaces/paymentMethods'
 
 const name_storage = 'paymentMethods'
 interface IReducer { [name_storage]: IPaymentMethod[] }

@@ -7,6 +7,8 @@ import { useAppDispatch, useAppSelector } from '../store';
 import ROUTES from '../router/router.settings';
 import tokenAction from '../store/auth/token/token.action';
 import headquartersAction from '../store/app/settings/headquarters/headquarters.action';
+import paymentMethodsAction from '../store/app/settings/paymentMehtods/paymentMethods.action';
+import salesLogsAction from '../store/app/salesLogs/salesLogs.action';
 
 function useToken() {
   const token = useAppSelector(state => state?.user?.token?.token);
@@ -15,7 +17,10 @@ function useToken() {
 
   const logout = () => {
     dispatch(tokenAction.drop());
+    dispatch(salesLogsAction.dropAll());
     dispatch(headquartersAction.dropAll());
+    dispatch(paymentMethodsAction.dropAll());
+
     navigate(ROUTES.LOGIN_ROUTE);
   }
 

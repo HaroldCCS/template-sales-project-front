@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../store';
 import headquartersAction from '../store/app/settings/headquarters/headquarters.action';
-import { IHeadquarter } from '../modules/settings/headquarter/headquarter.d';
+import { IHeadquarter } from '../interfaces/headquarter';
 
 function useHeadquarters() {
   const data = useAppSelector(state => state?.headquarters.headquarters);

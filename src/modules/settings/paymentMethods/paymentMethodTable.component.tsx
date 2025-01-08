@@ -1,7 +1,7 @@
 
 
 import usePaymentMethods from "../../../hooks/usePaymentMethods.hook";
-import { IPaymentMethod } from "./paymentMethods";
+import { IPaymentMethod } from "../../../interfaces/paymentMethods";
 
 
 const PaymentMethodTableComponent = () => {

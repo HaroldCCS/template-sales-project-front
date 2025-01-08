@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 
 import MoneyFormatter from "../../../utility/MoneyFormatter";
-import { ISalesLog } from "../salesLog.d";
+import { ISalesLog } from "../../../interfaces/salesLog";
 
 
 
@@ -20,7 +20,7 @@ const SalesLogTableComponent = () => {
 			quantity: 2,
 			finalPrice: 20000,
 			date: new Date(),
-			registrant: 'Angela',
+			registrant: 'Sofia',
 			method: 'NEQUI',
 			file: ''
 		}]
@@ -35,31 +35,31 @@ const SalesLogTableComponent = () => {
 
 				<thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 					<tr>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							id
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Descripcion
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Precio
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Cantidad
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Precion final
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Fecha de registro
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Registrante
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Metodo de pago
 						</th>
-						<th scope="col" className="px-6 py-3">
+						<th scope="col" className="px-6 py-3 text-center">
 							Comprobante
 						</th>
 					</tr>

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { IPaymentMethod } from "./paymentMethods"
+import { IPaymentMethod } from "../../../interfaces/paymentMethods"
 import usePaymentMethods from "../../../hooks/usePaymentMethods.hook"
 
 

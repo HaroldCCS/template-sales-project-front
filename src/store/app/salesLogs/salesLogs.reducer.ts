@@ -1,14 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import ACTIONS from './headquarters.action'
-import { IHeadquarter } from '../../../../interfaces/headquarter'
+import ACTIONS from './salesLogs.action'
+import { ISalesLog } from '../../../interfaces/salesLog.d'
 
-const name_storage = 'headquarters'
-interface IReducer { [name_storage]: IHeadquarter[] }
+const name_storage = 'paymentMethods'
+interface IReducer { [name_storage]: ISalesLog[] }
 
 const initialState: IReducer = { [name_storage]: [] }
 
-const headquarterReducer = createReducer<IReducer>(initialState, (builder) => {
+const salesLogsReducer = createReducer<IReducer>(initialState, (builder) => {
     builder.addCase(ACTIONS.setAll, (state, action) => {
         state[name_storage] = action.payload 
     })
@@ -30,4 +30,4 @@ const headquarterReducer = createReducer<IReducer>(initialState, (builder) => {
     })
 })
 
-export default headquarterReducer
+export default salesLogsReducer

@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { IPaymentMethod } from '../../../../modules/settings/paymentMethods/paymentMethods.d'
+import { IPaymentMethod } from '../../../../interfaces/paymentMethods'
 const fn_name = 'paymentMethods'
 
 //Many

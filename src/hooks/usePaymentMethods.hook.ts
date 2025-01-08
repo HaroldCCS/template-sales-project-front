@@ -1,4 +1,4 @@
-import { IPaymentMethod } from '../modules/settings/paymentMethods/paymentMethods';
+import { IPaymentMethod } from '../interfaces/paymentMethods';
 import { useAppDispatch, useAppSelector } from '../store';
 import paymentMethodsAction from '../store/app/settings/paymentMehtods/paymentMethods.action';
 

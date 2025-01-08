@@ -1,6 +1,6 @@
 
 
-import { IHeadquarter } from "./headquarter.d";
+import { IHeadquarter } from "../../../interfaces/headquarter";
 import useHeadquarters from "../../../hooks/useHeadquarters.hook";
 
 

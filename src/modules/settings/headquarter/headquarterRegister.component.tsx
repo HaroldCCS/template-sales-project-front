@@ -1,6 +1,6 @@
 import { useState } from "react"
 import useHeadquarters from "../../../hooks/useHeadquarters.hook"
-import { IHeadquarter } from "./headquarter"
+import { IHeadquarter } from "../../../interfaces/headquarter"
 
 
 const HeadquarterRegisterComponent = () => {
