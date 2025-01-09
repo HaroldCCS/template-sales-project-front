@@ -7,6 +7,7 @@ import ROUTES from "../../router/router.settings"
 import useToken from "../../hooks/useToken.hook"
 import ButtonOpenComponent from "./buttonOpen.component"
 import OP from "./option.component"
+import { IoMoon, IoSunny } from "react-icons/io5"
 
 const SidebarComponent = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +41,13 @@ const SidebarComponent = () => {
 
 
 const ListOptionsComponent = () => {
+	const [dark, setDark] = useState(false);
+
+	const darkModeHandler = () => {
+		setDark(!dark);
+		document.body.classList.toggle("dark");
+	}
+
 	return (
 		<ul className="space-y-2 font-medium flex-grow">
 			<OP to={ROUTES.REPORT_ROUTE} title="Reportes">
@@ -50,6 +58,10 @@ const ListOptionsComponent = () => {
 			</OP>
 			<OP to={ROUTES.SETTINGS_ROUTE} title="Configuración">
 				<MdSettings size={22} />
+			</OP>
+
+			<OP isButton={true} to={''} callback={darkModeHandler} title={dark ? "Modo oscuro" : "Modo claro"}>
+				{dark ? <IoSunny /> : <IoMoon />}
 			</OP>
 		</ul>
 	)
