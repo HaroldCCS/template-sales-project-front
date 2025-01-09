@@ -50,13 +50,13 @@ const FormComponent = (props: { close: () => void }) => {
       return;
     }
 
-    const headquarter: IPaymentMethod = {
+    const data: IPaymentMethod = {
       id: paymentMethods[paymentMethods.length - 1]?.id ? (paymentMethods[paymentMethods.length - 1].id + 1) : 1,
       name,
       color
     }
 
-    addOne(headquarter)
+    addOne(data)
 
     setName('');
     setColor('');
