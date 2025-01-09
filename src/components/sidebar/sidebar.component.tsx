@@ -60,7 +60,7 @@ const ListOptionsComponent = () => {
 				<MdSettings size={22} />
 			</OP>
 
-			<OP isButton={true} to={''} callback={darkModeHandler} title={dark ? "Modo oscuro" : "Modo claro"}>
+			<OP isButton={true} to={''} callback={darkModeHandler} title={!dark ? "Modo oscuro" : "Modo claro"}>
 				{dark ? <IoSunny /> : <IoMoon />}
 			</OP>
 		</ul>
