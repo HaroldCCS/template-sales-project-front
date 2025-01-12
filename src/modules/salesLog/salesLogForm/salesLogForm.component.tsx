@@ -81,10 +81,10 @@ const SalesLogFormComponent = (props: { close: () => void }) => {
 
     switch (paymentMethod?.name?.toLowerCase()) {
       case 'nequi':
-        children = <img src='public/nequi.svg' alt='nequi' className="w-max h-6 me-2" sizes='22'></img>
+        children = <img src='nequi.svg' alt='nequi' className="w-auto h-6 me-2" sizes='22'></img>
         break;
       case 'daviplata':
-        children = <img src='public/daviplata.png' alt='daviplata' className="w-max h-6 me-2" sizes='22' />
+        children = <img src='daviplata.png' alt='daviplata' className="w-auto h-6 me-2" sizes='22' />
         break;
       case 'efectivo':
         title = "EFECTIVO"
