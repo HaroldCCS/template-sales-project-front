@@ -1,9 +1,8 @@
-import { useEffect } from "react";
 import { Line } from "react-chartjs-2";
 
 
 
-const ReportLineComponent = ({ title, data, label_name }: { title: string, data: { label: string[], data: number[] }, label_name?: string }) => {
+const ReportLineComponent = ({ title, data }: { title: string, data: { label: string[], data: number[] }, label_name?: string }) => {
   const options = {
     responsive: true,
     plugins: {

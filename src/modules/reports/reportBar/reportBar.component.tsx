@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react"
 import { Bar } from "react-chartjs-2"
 
 
 
-const ReportBarComponent = ({ title, data, label_name }: {title: string, data: {label: string[], data: number[]}, label_name?: string}) => {
-	const [statistics, setStatistics] = useState<any>({
-		labels: [],
-		datasets: [],
-	})
-	useEffect(() => {
+const colorBar = 'rgba(255, 99, 132, 0.5)'
+const ReportBarComponent = ({ title, data, label_name }: {title: string, data: {label: string[], data: number[], backgroundColor?: string | string[]}, label_name?: string}) => {
 
-		setStatistics({
-			labels: data.label,
-			datasets: [
-				{
-					label: label_name || 'Datos',
-					data: data.data,
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-				}
-			],
-		})
-
-	}, [data])
 	return (
 		<Bar
+			className="my-5"
 			options={{
 				responsive: true,
 				plugins: {
@@ -36,7 +20,16 @@ const ReportBarComponent = ({ title, data, label_name }: {title: string, data: {
 					},
 				},
 			}}
-			data={statistics}
+			data={{
+				labels: data.label,
+				datasets: [
+					{
+						label: label_name || '',
+						data: data.data,
+						backgroundColor: data?.backgroundColor?.length ? data.backgroundColor : colorBar,
+					}
+				],
+			}}
 		/>
 
 

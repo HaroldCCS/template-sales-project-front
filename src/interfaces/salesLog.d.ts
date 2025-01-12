@@ -4,9 +4,9 @@ export interface ISalesLog {
 	price: number;
 	quantity: number;
 	finalPrice: number;
-	date: Date;
-	registrant: string;
-	method: number;
+	date: Date | string;
+	registrant: string | number;
+	method: number | string;
 	file: string;
-	headquarter?: string;
+	headquarter?: string | number;
 }

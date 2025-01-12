@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "description": "Camiseta",
+    "price": 40000,
+    "quantity": 2,
+    "finalPrice": 80000,
+    "date": "2023-01-12T00:00:00.000Z",
+    "registrant": 1,
+    "method": 1,
+    "file": "",
+    "headquarter": 1
+  },
+  {
+    "id": 1,
+    "description": "jean",
+    "price": 50000,
+    "quantity": 3,
+    "finalPrice": 150000,
+    "date": "2023-01-12T01:00:00.000Z",
+    "registrant": 2,
+    "method": 2,
+    "file": "",
+    "headquarter": 1
+  },
+  {
+    "id": 1,
+    "description": "gorra",
+    "price": 10000,
+    "quantity": 2,
+    "finalPrice": 20000,
+    "date": "2023-01-12T02:00:00.000Z",
+    "registrant": 1,
+    "method": 1,
+    "file": "",
+    "headquarter": 2
+  },
+  {
+    "id": 1,
+    "description": "zapatos",
+    "price": 120000,
+    "quantity": 1,
+    "finalPrice": 120000,
+    "date": "2023-01-01T03:00:00.000Z",
+    "registrant": 2,
+    "method": 3,
+    "file": "",
+    "headquarter": 2
+  },
+  {
+    "id": 1,
+    "description": "camiseta",
+    "price": 60000,
+    "quantity": 1,
+    "finalPrice": 60000,
+    "date": "2023-01-01T03:00:00.000Z",
+    "registrant": 2,
+    "method": 3,
+    "file": "",
+    "headquarter": 2
+  }
+]

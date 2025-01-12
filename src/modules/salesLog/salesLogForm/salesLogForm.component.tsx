@@ -127,7 +127,7 @@ const SalesLogFormComponent = (props: { close: () => void }) => {
 
 
   return (
-    <form onSubmit={handleSubmit} className=''>
+    <form onSubmit={handleSubmit} className='p-4'>
 
       <div className='w-full mb-4'>
         <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion</label>

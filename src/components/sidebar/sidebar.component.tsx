@@ -2,7 +2,6 @@ import { memo, useState } from "react"
 import { HiOutlineDocumentReport } from "react-icons/hi"
 import { MdAttachMoney, MdSettings } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
-import { Link } from "react-router-dom"
 import ROUTES from "../../router/router.settings"
 import useToken from "../../hooks/useToken.hook"
 import ButtonOpenComponent from "./buttonOpen.component"
@@ -24,15 +23,7 @@ const SidebarComponent = () => {
 			>
 				<ButtonOpenComponent setIsOpen={() => setIsOpen(prev => !prev)} />
 				<div className="pt-14 h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800 flex flex-col">
-					<ListOptionsComponent closeSidebar={()	=> setIsOpen(false)} />
-					<ul className="space-y-2 font-medium">
-						<li>
-							<Link to={''} onClick={logout} className={`dark:text-white text-gray-900 dark:text-white' mb-3 flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 group`}>
-								<RiLogoutBoxLine size={22} />
-								<span className="ms-3">Cerrar Sesión</span>
-							</Link>
-						</li>
-					</ul>
+					<ListOptionsComponent logout={logout} closeSidebar={() => setIsOpen(false)} />
 				</div>
 			</aside>
 		</>
@@ -40,7 +31,7 @@ const SidebarComponent = () => {
 };
 
 
-const ListOptionsComponent = ({closeSidebar}: {closeSidebar: () => void}) => {
+const ListOptionsComponent = ({ closeSidebar, logout }: { closeSidebar: () => void, logout: () => void }) => {
 	const [dark, setDark] = useState(false);
 
 	const darkModeHandler = () => {
@@ -62,6 +53,9 @@ const ListOptionsComponent = ({closeSidebar}: {closeSidebar: () => void}) => {
 
 			<OP isButton={true} to={''} callback={darkModeHandler} title={!dark ? "Modo oscuro" : "Modo claro"}>
 				{dark ? <IoSunny /> : <IoMoon />}
+			</OP>
+			<OP to={''} callback={logout} title="Cerrar Sesión">
+				<RiLogoutBoxLine size={22} />
 			</OP>
 		</ul>
 	)

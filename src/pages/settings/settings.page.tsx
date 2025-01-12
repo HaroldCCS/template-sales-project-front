@@ -10,7 +10,7 @@ const SettingsPage = () => {
             <br className="my-5" />
 
 
-            <div className="flex gap-5 flex-wrap">
+            <div className="flex gap-5 flex-wrap sm:justify-start justify-center">
                 <CardComponent
                     title="Sedes"
                     description="Agrega, elimina y edita sedes"
