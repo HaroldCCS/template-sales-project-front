@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2"
 
 
 
-const ReportBarComponent = () => {
+const ReportBarComponent = ({ title, data, label_name }: {title: string, data: {label: string[], data: number[]}, label_name?: string}) => {
 	const [statistics, setStatistics] = useState<any>({
 		labels: [],
 		datasets: [],
@@ -11,17 +11,17 @@ const ReportBarComponent = () => {
 	useEffect(() => {
 
 		setStatistics({
-			labels: ["HOLI", "CHAO"],
+			labels: data.label,
 			datasets: [
 				{
-					label: 'Datos',
-					data: [7, 2],
+					label: label_name || 'Datos',
+					data: data.data,
 					backgroundColor: 'rgba(255, 99, 132, 0.5)',
 				}
 			],
 		})
 
-	}, [])
+	}, [data])
 	return (
 		<Bar
 			options={{
@@ -32,7 +32,7 @@ const ReportBarComponent = () => {
 					},
 					title: {
 						display: true,
-						text: 'Estadisticas de encuestas: preguntas que han sido contestadas por beneficiarios',
+						text: title,
 					},
 				},
 			}}

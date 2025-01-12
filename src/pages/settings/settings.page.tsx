@@ -21,6 +21,11 @@ const SettingsPage = () => {
                     description="Agrega, elimina y edita metodos de pago"
                     to={ROUTES.SETTINGS_PAYMENT_METHODS}
                 />
+                <CardComponent
+                    title="Empleados"
+                    description="Agrega, elimina y edita empleados"
+                    to={ROUTES.SETTINGS_EMPLOYEES}
+                />
             </div>
         </div>
     )

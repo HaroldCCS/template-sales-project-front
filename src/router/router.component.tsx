@@ -21,6 +21,7 @@ import LoginPage from '../pages/login/login.page';
 import SettingsPage from '../pages/settings/settings.page';
 import HeadquartersPage from '../pages/settings/headquarters/headquarters.page';
 import PaymentMethodsPage from '../pages/settings/paymentMethods/paymentMethods.page';
+import EmployeesPage from '../pages/settings/employees/employees.page';
 
 
 const RouterComponent: React.FC = () => {
@@ -37,6 +38,7 @@ const RouterComponent: React.FC = () => {
                     <Route path={ROUTES.SETTINGS_ROUTE} element={<LoggedLayout><SettingsPage /></LoggedLayout>} />
                     <Route path={ROUTES.SETTINGS_HEADQUARTERS} element={<LoggedLayout><HeadquartersPage /></LoggedLayout>} />
                     <Route path={ROUTES.SETTINGS_PAYMENT_METHODS} element={<LoggedLayout><PaymentMethodsPage /></LoggedLayout>} />
+                    <Route path={ROUTES.SETTINGS_EMPLOYEES} element={<LoggedLayout><EmployeesPage /></LoggedLayout>} />
                 </Route>
 
                 <Route element={<PublicRoute />}>

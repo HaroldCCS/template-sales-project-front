@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "EFECTIVO",
+    "color": "green"
+  },
+  {
+    "id": 2,
+    "name": "NEQUI",
+    "color": "blue"
+  },
+  {
+    "id": 3,
+    "name": "DAVIPLATA",
+    "color": "red"
+  },
+  {
+    "id": 4,
+    "name": "TARJETA",
+    "color": "purple"
+  },
+
+  {
+    "id": 5,
+    "name": "otros",
+    "color": "yellow"
+  }
+]

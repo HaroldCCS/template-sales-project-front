@@ -6,7 +6,7 @@ export interface ISalesLog {
 	finalPrice: number;
 	date: Date;
 	registrant: string;
-	method: 'NEQUI'  | 'EFECTIVO' | 'TARJETA' | 'DAVIPLATA';
+	method: number;
 	file: string;
 	headquarter?: string;
 }

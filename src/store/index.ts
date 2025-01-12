@@ -8,6 +8,7 @@ import tokenReducer from './auth/token/token.reducer'
 import headquarterReducer from './app/settings/headquarters/headquarters.reducer'
 import paymentMethodReducer from './app/settings/paymentMehtods/paymentMethods.reducer'
 import salesLogsReducer from './app/salesLogs/salesLogs.reducer'
+import employeeReducer from './app/settings/employees/employees.reducer'
 
 const userReducerCombined = combineReducers({
     token: tokenReducer,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     headquarters: headquarterReducer,
     paymentMethods: paymentMethodReducer,
     salesLogs: salesLogsReducer,
+    employees: employeeReducer,
 })
 
 const persistedReducer = persistReducer(

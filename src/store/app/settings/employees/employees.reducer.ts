@@ -1,18 +1,18 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-import ACTIONS from './paymentMethods.action'
-import { IPaymentMethod } from '../../../../interfaces/paymentMethods'
+import ACTIONS from './employees.action'
+import { IEmployee } from '../../../../interfaces/employees.d'
 
 import env from '../../../../settings/env'
 import mock from './data.json'
 
-const name_storage = 'paymentMethods'
-interface IReducer { [name_storage]: IPaymentMethod[] }
+const name_storage = 'employees'
+interface IReducer { [name_storage]: IEmployee[] }
 
 
 const initialState: IReducer = { [name_storage]: env.DATA_MOCK ? mock : [] }
 
-const paymentMethodReducer = createReducer<IReducer>(initialState, (builder) => {
+const employeeReducer = createReducer<IReducer>(initialState, (builder) => {
     builder.addCase(ACTIONS.setAll, (state, action) => {
         state[name_storage] = action.payload 
     })
@@ -34,4 +34,4 @@ const paymentMethodReducer = createReducer<IReducer>(initialState, (builder) => 
     })
 })
 
-export default paymentMethodReducer
+export default employeeReducer

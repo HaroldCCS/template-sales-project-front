@@ -28,7 +28,7 @@ const HeadquarterTableComponent = () => {
         </thead>
 
         <tbody>
-          {headquarters?.map(data => <RowComponent data={data} />)}
+          {headquarters?.map(data => <RowComponent key={data.id} data={data} />)}
         </tbody>
 
       </table>

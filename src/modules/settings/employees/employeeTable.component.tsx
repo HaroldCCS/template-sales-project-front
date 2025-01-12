@@ -1,12 +1,12 @@
+import useEmployees from "../../../hooks/useEmployees.hook"
+import { IEmployee } from "../../../interfaces/employees"
 
 
-import usePaymentMethods from "../../../hooks/usePaymentMethods.hook";
-import { IPaymentMethod } from "../../../interfaces/paymentMethods";
 
 
-const PaymentMethodTableComponent = () => {
+const EmployeeTableComponent = () => {
 
-  const { paymentMethods } = usePaymentMethods()
+  const { employees } = useEmployees()
 
 
   return (
@@ -21,14 +21,11 @@ const PaymentMethodTableComponent = () => {
             <th scope="col" className="px-6 py-3 text-center">
               nombre
             </th>
-            <th scope="col" className="px-6 py-3 text-center">
-              color
-            </th>
           </tr>
         </thead>
 
         <tbody>
-          {paymentMethods?.map(data => <RowComponent key={data.id} data={data} />)}
+          {employees?.map(data => <RowComponent key={data.id} data={data} />)}
         </tbody>
 
       </table>
@@ -36,14 +33,11 @@ const PaymentMethodTableComponent = () => {
   )
 }
 
-const RowComponent = (props: { data: IPaymentMethod }) => {
+const RowComponent = (props: { data: IEmployee }) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
       <ColumnComponent title={props.data.id?.toString()}> </ColumnComponent>
       <ColumnComponent title={props.data.name?.toString()}> </ColumnComponent>
-      <td scope="col" className="px-6 py-3 text-center flex justify-center">
-        <div className=" w-4 h-4" style={{ backgroundColor: props.data.color }}></div>
-      </td>
     </tr>
   )
 }
@@ -57,4 +51,4 @@ const ColumnComponent = (props: { children?: React.ReactNode, title: string }) =
   )
 }
 
-export default PaymentMethodTableComponent
+export default EmployeeTableComponent

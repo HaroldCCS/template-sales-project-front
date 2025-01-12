@@ -3,10 +3,13 @@ import { createReducer } from '@reduxjs/toolkit'
 import ACTIONS from './headquarters.action'
 import { IHeadquarter } from '../../../../interfaces/headquarter'
 
+import env from '../../../../settings/env'
+import mock from './data.json'
+
 const name_storage = 'headquarters'
 interface IReducer { [name_storage]: IHeadquarter[] }
 
-const initialState: IReducer = { [name_storage]: [] }
+const initialState: IReducer = { [name_storage]: env.DATA_MOCK ? mock : [] }
 
 const headquarterReducer = createReducer<IReducer>(initialState, (builder) => {
     builder.addCase(ACTIONS.setAll, (state, action) => {

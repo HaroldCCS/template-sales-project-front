@@ -7,14 +7,17 @@ import useHeadquarters from "../../../hooks/useHeadquarters.hook";
 import usePaymentMethods from "../../../hooks/usePaymentMethods.hook";
 import { IHeadquarter } from "../../../interfaces/headquarter";
 import { IPaymentMethod } from "../../../interfaces/paymentMethods";
+import useEmployees from "../../../hooks/useEmployees.hook";
+import { IEmployee } from "../../../interfaces/employees";
 
 
 
 const SalesLogTableComponent = ({ isShort }: { isShort: boolean }) => {
 
 	const { salesLogs } = useSalesLogs()
-	const {headquarters} = useHeadquarters()
+	const { headquarters } = useHeadquarters()
 	const { paymentMethods } = usePaymentMethods()
+	const { employees } = useEmployees()
 
 	return (
 		<div className="relative overflow-x-auto">
@@ -25,7 +28,7 @@ const SalesLogTableComponent = ({ isShort }: { isShort: boolean }) => {
 				</thead>
 
 				<tbody>
-					{salesLogs?.map(data => isShort ? <RowShortComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} /> : <RowCompleteComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} />)}
+					{salesLogs?.map(data => isShort ? <RowShortComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} employees={employees} /> : <RowCompleteComponent key={data.id} sale={data} headquarters={headquarters} paymentMethods={paymentMethods} employees={employees} />)}
 				</tbody>
 
 			</table>
@@ -92,19 +95,19 @@ const TableHeaderCompleteComponent = () => {
 	)
 }
 
-const RowShortComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[] }) => {
+const RowShortComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[], employees: IEmployee[] }) => {
 	return (
 		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 			<ColumnComponent title={props.sale.description}> </ColumnComponent>
 			<ColumnComponent title={MoneyFormatter(props.sale.finalPrice)}> </ColumnComponent>
 			<ColumnComponent title={new Date(props.sale.date)?.toLocaleString()}> </ColumnComponent>
-			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name  || ''}> </ColumnComponent>
-			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name  || ''}> </ColumnComponent>
+			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name || ''}> </ColumnComponent>
+			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name || ''}> </ColumnComponent>
 		</tr>
 	)
 }
 
-const RowCompleteComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[] }) => {
+const RowCompleteComponent = (props: { sale: ISalesLog, headquarters: IHeadquarter[], paymentMethods: IPaymentMethod[], employees: IEmployee[] }) => {
 	return (
 		<tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 			<ColumnComponent title={props.sale.id?.toString()}> </ColumnComponent>
@@ -113,13 +116,14 @@ const RowCompleteComponent = (props: { sale: ISalesLog, headquarters: IHeadquart
 			<ColumnComponent title={props.sale.quantity?.toString()}> </ColumnComponent>
 			<ColumnComponent title={MoneyFormatter(props.sale.finalPrice)}> </ColumnComponent>
 			<ColumnComponent title={new Date(props.sale.date)?.toLocaleString()}> </ColumnComponent>
-			<ColumnComponent title={props.sale.registrant}> </ColumnComponent>
-			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name  || ''}> </ColumnComponent>
-			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name  || ''}> </ColumnComponent>
+			<ColumnComponent title={props.employees?.find(_e => _e?.id == Number(props.sale?.registrant))?.name || ''}> </ColumnComponent>
+			<ColumnComponent title={props.paymentMethods?.find(_e => _e?.id == Number(props.sale?.method))?.name || ''}> </ColumnComponent>
+			<ColumnComponent title={props.headquarters?.find(_e => _e?.id == Number(props.sale?.headquarter))?.name || ''}> </ColumnComponent>
 			<ColumnComponent title={''}>
-				<a target="_blank" href={props?.sale?.file} >
-					<FaEye size={20} className="hover:text-blue-600 dark:hover:text-blue-500 cursor-pointer flex w-full items-center justify-center" />
-				</a>
+				{props?.sale?.file &&
+					<a target="_blank" href={props?.sale?.file} >
+						<FaEye size={20} className="hover:text-blue-600 dark:hover:text-blue-500 cursor-pointer flex w-full items-center justify-center" />
+					</a>}
 			</ColumnComponent>
 		</tr>
 	)
