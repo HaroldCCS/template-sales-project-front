@@ -3,6 +3,7 @@ import ROUTES from "../../router/router.settings"
 import { useState } from "react"
 import { useAppDispatch } from "../../store"
 import tokenAction from "../../store/auth/token/token.action"
+import useSetAllVariables from "../../hooks/useSetAllVariables.hook"
 
 
 const LoginPage = () => {
@@ -24,6 +25,8 @@ const LoginPage = () => {
 
 
 const FormComponent = () => {
+	const { setAllVariables } = useSetAllVariables()
+
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
@@ -36,6 +39,7 @@ const FormComponent = () => {
 
 		const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE3NTAzNzc2MDAwMDB9.Zb-ixauzERNQzPw1Qo8P8V44VI-wM9agmi6xhpmBAjo"
 		dispatch(tokenAction.set(token))
+		setAllVariables()
 		navigate(ROUTES.SALES_LOG_ROUTE)
 	}
 

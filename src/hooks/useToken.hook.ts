@@ -9,6 +9,7 @@ import tokenAction from '../store/auth/token/token.action';
 import headquartersAction from '../store/app/settings/headquarters/headquarters.action';
 import paymentMethodsAction from '../store/app/settings/paymentMehtods/paymentMethods.action';
 import salesLogsAction from '../store/app/salesLogs/salesLogs.action';
+import employeesAction from '../store/app/settings/employees/employees.action';
 
 function useToken() {
   const token = useAppSelector(state => state?.user?.token?.token);
@@ -20,6 +21,7 @@ function useToken() {
     dispatch(salesLogsAction.dropAll());
     dispatch(headquartersAction.dropAll());
     dispatch(paymentMethodsAction.dropAll());
+    dispatch(employeesAction.dropAll());
 
     navigate(ROUTES.LOGIN_ROUTE);
   }
