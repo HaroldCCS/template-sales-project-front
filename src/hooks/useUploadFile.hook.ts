@@ -3,6 +3,8 @@ import axios, { AxiosProgressEvent } from "axios";
 import env from "../settings/env";
 
 
+const pathUploadFile = '/file/signedUrl'
+
 const useUploadFile = ({ file }: {file?: File}) => {
   const [progressBar, setProgressBar] = useState(0);
   const [errorMessage, setError] = useState("");
@@ -27,13 +29,13 @@ const useUploadFile = ({ file }: {file?: File}) => {
     try {
       setProgressBar(0.1);
       //@INFO Obteniedo PreSigned de S3 para cargar la imagen desde react
-      const uploadResponse = await fetch(env.UPLOAD_FILE_URL + "/", {
+      const uploadResponse = await fetch(env.SERVERLESS_URL + pathUploadFile, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          folder: env.UPLOAD_FILE_URL,
+          folder: env.UPLOAD_FILE_FOLDER,
           contentType: file.type,
         }),
       });

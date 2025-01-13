@@ -1,9 +1,11 @@
 
 const ROUTES = {
     LOGIN_ROUTE: '/login',
+    REGISTER_ROUTE: '/registro',
+
     SALES_LOG_ROUTE: '/ventas',
     REPORT_ROUTE: '/reportes',
-    REGISTER_ROUTE: '/registro',
+    LINK_PAYMENT_ROUTE: '/link-de-pago',
 
     SETTINGS_ROUTE: '/configuraciones',
     SETTINGS_HEADQUARTERS: '/configuraciones/sedes',

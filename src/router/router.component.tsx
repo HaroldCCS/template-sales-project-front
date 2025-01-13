@@ -22,6 +22,7 @@ import SettingsPage from '../pages/settings/settings.page';
 import HeadquartersPage from '../pages/settings/headquarters/headquarters.page';
 import PaymentMethodsPage from '../pages/settings/paymentMethods/paymentMethods.page';
 import EmployeesPage from '../pages/settings/employees/employees.page';
+import PaymentLinkPage from '../pages/paymentQR/paymentQR.page';
 
 
 const RouterComponent: React.FC = () => {
@@ -33,6 +34,7 @@ const RouterComponent: React.FC = () => {
                     <Route path="*" element={<Navigate to={ROUTES.SALES_LOG_ROUTE} replace />} />
                     <Route path={ROUTES.SALES_LOG_ROUTE} element={<LoggedLayout><SalesLogPage /></LoggedLayout>} />
                     <Route path={ROUTES.REPORT_ROUTE} element={<LoggedLayout><ReportsPage /></LoggedLayout>} />
+                    <Route path={ROUTES.LINK_PAYMENT_ROUTE} element={<LoggedLayout><PaymentLinkPage /></LoggedLayout>} />
 
                     {/* SETTINGS */}
                     <Route path={ROUTES.SETTINGS_ROUTE} element={<LoggedLayout><SettingsPage /></LoggedLayout>} />

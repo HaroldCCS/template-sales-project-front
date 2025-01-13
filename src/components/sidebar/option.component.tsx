@@ -7,11 +7,9 @@ const OptionComponent = (props: { isButton?: boolean, callback?: () => void, chi
 
 	if (props?.isButton) return <li>
 		<button onClick={props?.callback} className={`
-
-			
-			dark:bg-transparent w-full'text-gray-900 rounded-lg dark:text-white mb-3  flex items-center p-2  hover:bg-gray-100 dark:hover:bg-gray-700 group
-			
-			 bg-gray-200 dark:bg-gray-700 group w-full
+			w-full'text-gray-900 rounded-lg  mb-3  flex items-center p-2  hover:bg-gray-100 bg-white
+			group w-full group
+			dark:bg-transparent  dark:bg-gray-700 dark:text-white dark:hover:bg-gray-700
 			`}>
 			{props.children}
 			<span className="ms-3">{props.title}</span>

@@ -1,6 +1,6 @@
 import { memo, useState } from "react"
 import { HiOutlineDocumentReport } from "react-icons/hi"
-import { MdAttachMoney, MdSettings } from "react-icons/md"
+import { MdAttachMoney, MdPayment, MdSettings } from "react-icons/md"
 import { RiLogoutBoxLine } from "react-icons/ri"
 import ROUTES from "../../router/router.settings"
 import useToken from "../../hooks/useToken.hook"
@@ -47,9 +47,15 @@ const ListOptionsComponent = ({ closeSidebar, logout }: { closeSidebar: () => vo
 			<OP to={ROUTES.SALES_LOG_ROUTE} callback={closeSidebar} title="Ventas">
 				<MdAttachMoney size={22} />
 			</OP>
+
+			<OP to={ROUTES.LINK_PAYMENT_ROUTE} callback={closeSidebar} title="Link de pago">
+				<MdPayment size={22} />
+			</OP>
+
 			<OP to={ROUTES.SETTINGS_ROUTE} callback={closeSidebar} title="Configuración">
 				<MdSettings size={22} />
 			</OP>
+			<hr />
 
 			<OP isButton={true} to={''} callback={darkModeHandler} title={!dark ? "Modo oscuro" : "Modo claro"}>
 				{dark ? <IoSunny /> : <IoMoon />}

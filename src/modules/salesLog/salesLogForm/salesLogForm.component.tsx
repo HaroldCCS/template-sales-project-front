@@ -14,6 +14,7 @@ import OptionPaymentMethodComponent from './optionPaymentMethod.component';
 import { IPaymentMethod } from '../../../interfaces/paymentMethods';
 import InputControlButtonComponent from '../../../components/inputControlButton/inputControlButton.component';
 import MoneyFormatter from '../../../utility/MoneyFormatter';
+import HelperPriceComponent from '../../../components/helperPrice/helperPrice.component';
 
 
 
@@ -219,22 +220,5 @@ const SalesLogFormComponent = (props: { close: () => void }) => {
   )
 }
 
-
-const HelperPriceComponent = ({ name, hanldeChange, typePlus , className}: {className?: string,  typePlus?: boolean, name: 'price' | 'finalPrice', hanldeChange: (name: 'price' | 'finalPrice', money: number) => void }) => {
-
-  return (
-    <div className={"flex w-full text-xs " + className}>
-      <button onClick={() => hanldeChange(name, (typePlus ? 1 : -1) * 100)} type="button" id="decrement-button" className="w-full bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-        {typePlus ? '+' : '-'} 100
-      </button>
-      <button onClick={() => hanldeChange(name, (typePlus ? 1 : -1) * 1_000)} type="button" id="decrement-button" className="w-full bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-        {typePlus ? '+' : '-'} 1.000
-      </button>
-      <button onClick={() => hanldeChange(name, (typePlus ? 1 : -1) * 10_000)} type="button" id="decrement-button" className="w-full bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-        {typePlus ? '+' : '-'} 10.000
-      </button>
-    </div>
-  )
-}
 
 export default SalesLogFormComponent
