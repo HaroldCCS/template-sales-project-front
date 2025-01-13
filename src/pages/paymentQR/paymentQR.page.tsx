@@ -20,7 +20,7 @@ const PaymentQRPage = () => {
 		setPrice(Number(e?.target?.value))
 	}
 
-	const handlePriceChange = (name: 'price' | 'finalPrice', money: number) => {
+	const handlePriceChange = (_name: 'price' | 'finalPrice', money: number) => {
 		setPrice(prev => {
 			const calculatedMoney = Number(prev ? prev : 0) + Number(money);
 			return calculatedMoney > 0 ? calculatedMoney : 0;
