@@ -1,3 +1,6 @@
+# DEMO
+https://nueva-moda-admin.web.app/login
+
 # how to run
 - npm i
 - npm run dev
